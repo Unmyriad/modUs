@@ -1,0 +1,38 @@
+[project]
+name = "modus"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Muhammad Habibur Rahman", email = "126289728+unmyriad@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "cuquantum-python>=26.9.0",
+    "fastapi>=0.162.0",
+    "matplotlib>=3.11.2",
+    "networkx>=3.7",
+    "pathlib>=1.0.1",
+    "qiskit>=2.6.1",
+    "qiskit-aer>=0.18.0",
+    "qiskit-aer-gpu>=0.18.0",
+    "requests>=2.34.2",
+    "scipy>=1.18.1",
+    "textual>=8.2.8",
+]
+
+[project.scripts]
+modus = "modus:main"
+
+[build-system]
+requires = ["uv_build>=0.13.0,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+docs = [
+    "mkdocs>=1.6.1",
+    "sphinx>=9.1.1",
+]
