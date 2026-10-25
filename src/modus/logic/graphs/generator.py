@@ -1,4 +1,5 @@
 import networkx as nx
+import random
 import logging
 from typing import Dict, Any
 from modus.utils.pretty import pretty_print
@@ -8,18 +9,19 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def generate_max_cut(problem_size: int = 20, edge_probability: float = 0.5, seed: int = 42) -> Dict:
+def generate_max_cut(problem_size: int = 20, edge_probability: float = 0.5, seed: int | None = None) -> Dict:
     """Generate Max-Cut Problem
 
     Args:
         problem_size (int): the number of nodes in graph
         edge_probability (float): The likelihood of of two nodes connecting
-        seed (int, optional): Random seed . Defaults to 42.
+        seed (int, optional): Random seeds
 
     Returns:
         problem (dict): Dictionary containing the graph and node size
     """
-    G = nx.erdos_renyi_graph(problem_size, edge_probability, seed)
+    rand_seed = random.Random(seed)
+    G = nx.erdos_renyi_graph(problem_size, edge_probability, seed=rand_seed.randint(0, 2**32 - 1))
     
     
     if not nx.is_connected(G):
