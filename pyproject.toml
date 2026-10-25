@@ -3,40 +3,80 @@ name = "modus"
 version = "0.1.0"
 description = "5 Way Benchmarking tool for Max-Cut graphs using Qiskit on CPU and GPU"
 readme = "README.md"
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
 authors = [
     { name = "Muhammad Habibur Rahman", email = "126289728+unmyriad@users.noreply.github.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "cuquantum-python>=26.9.0",
-    "fastapi>=0.162.0",
     "matplotlib>=3.11.2",
     "networkx>=3.7",
-    "pathlib>=1.0.1",
+    "numpy",
     "pydantic>=2.14.1",
     "qiskit>=2.6.1",
-    "qiskit-aer>=0.18.0",
-    "qiskit-aer-gpu>=0.18.0",
+    "qiskit-ibm-runtime",        
     "requests>=2.34.2",
-    "scipy>=1.18.1",
-    "textual>=8.2.8",
-    "typing>=3.10.0.0",
+    "scipy>=1.18.1",             
+    "textual>=8.2.8",            
+    "typer",                     
 ]
 
 [project.scripts]
-modus = "modus:main"
+modus = "modus.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.13.0,<0.14.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
+
+cpu = [
+    "qiskit-aer>=0.18.0",        
+]
+
+gpu = [
+    "qiskit-aer-gpu>=0.18.0",    
+    "cupy-cuda12x",              
+    "cuquantum-python>=26.9.0",  
+]
+
 dev = [
+    "jsonschema",
+    "mypy",
     "pytest>=9.1.1",
+    "pytest-cov",
+    "ruff",
 ]
 docs = [
-    "mkdocs>=1.6.1",
     "myst-parser>=5.1.0",
     "sphinx>=9.1.1",
+    "sphinx-autodoc-typehints",
     "sphinx-rtd-theme>=3.1.0",
 ]
+
+api = [
+    "fastapi>=0.162.0",
+    "pyyaml",
+    "uvicorn[standard]",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+# qiskit-aer and qiskit-aer-gpu both install the `qiskit_aer` module
+conflicts = [
+    [{ group = "cpu" }, { group = "gpu" }],
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "gpu: requires an NVIDIA GPU and the gpu dependency group",
+    "ibm: requires IBM Quantum credentials (consumes QPU budget)",
+]
+addopts = "-m 'not gpu and not ibm'"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+

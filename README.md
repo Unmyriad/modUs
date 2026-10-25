@@ -50,10 +50,47 @@ Clone this repo
 git clone https://github.com/unmyriad/modus.git
 cd modus
 ```
-To sync packages between `pyproject.toml` and `uv.lock` for the user group only using uv, run:
+## Step 3 - Choose a hardware group
+modus has two **mutually exclusive** dependency groups. Pick the one that matches your machine:
+
+| Group | Use when | Methods available |
+|-------|----------|-------------------|
+| `gpu` | You have an NVIDIA GPU (Linux x86_64 or WSL2) | All 5: Classical CPU, Classical GPU, Qiskit CPU, Qiskit GPU, IBM Quantum |
+| `cpu` | No NVIDIA GPU (laptops, macOS, CI) | Classical CPU, Qiskit CPU, IBM Quantum |
+
 ```bash
-uv sync --no-dev --locked
+# NVIDIA GPU machine
+uv sync --no-dev --locked --group gpu
+
+# CPU-only machine
+uv sync --no-dev --locked --group cpu
 ```
+
+> [!NOTE]
+> The `gpu` group also includes the CPU simulator (`qiskit-aer-gpu` supports `device="CPU"`), so on a GPU machine you only ever need `--group gpu`.
+
+### Why can't I install both groups?
+`qiskit-aer` (CPU) and `qiskit-aer-gpu` (GPU) are two builds of the **same library**. Both install into the same `qiskit_aer/` folder and are imported the same way (`import qiskit_aer`). If both were installed, one would overwrite the other's files, and uninstalling either would break the other. Python can't keep two packages with the same import name side by side, so `pyproject.toml` declares the groups as conflicting and uv refuses to install them together.
+
+### Why does `uv sync` remove the other group?
+`uv sync` is **exact** by design: it makes your `.venv` match exactly what `uv.lock` and your command describe, and removes anything else. This keeps environments reproducible, because no leftover packages make code work on one machine but not another.
+
+| Command | Result |
+|---------|--------|
+| `uv sync --group gpu` | Installs the GPU packages and removes `qiskit-aer` if present |
+| `uv sync --group cpu` | Installs `qiskit-aer` and removes the GPU packages if present |
+| `uv sync --group cpu --group gpu` | Refused (conflicting groups) |
+| `uv sync` *(no group)* | ⚠️ Removes **both** hardware groups |
+| `uv run ...` | Never removes packages. Safe to use after syncing a group. |
+
+> [!WARNING]
+> A bare `uv sync` (e.g. after `git pull`) will remove your hardware group. Always pass your group (`uv sync --group gpu`), or use `uv sync --inexact` to add new packages without removing any.
+
+After switching groups, check which Aer build is active:
+```bash
+uv run python -c "import qiskit_aer; print(qiskit_aer.__version__)"
+```
+
 For dev packages, check [Development](#development)
 
 
@@ -66,3 +103,8 @@ uv run modus
 ```
 
 # Development
+Development tools (`pytest`, `ruff`, `mypy`) are in the `dev` group, which uv installs by default. Add your hardware group as usual:
+```bash
+uv sync --group gpu                 # or --group cpu
+uv sync --group gpu --group docs    # include Sphinx to build the documentation
+```
