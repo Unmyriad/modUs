@@ -13,12 +13,14 @@ dependencies = [
     "matplotlib>=3.11.2",
     "networkx>=3.7",
     "pathlib>=1.0.1",
+    "pydantic>=2.14.1",
     "qiskit>=2.6.1",
     "qiskit-aer>=0.18.0",
     "qiskit-aer-gpu>=0.18.0",
     "requests>=2.34.2",
     "scipy>=1.18.1",
     "textual>=8.2.8",
+    "typing>=3.10.0.0",
 ]
 
 [project.scripts]
