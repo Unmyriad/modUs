@@ -30,7 +30,7 @@ def generate_max_cut(problem_size: int = 20, edge_probability: float = 0.5, seed
     
     graph_dict = nx.to_dict_of_dicts(G)
     
-    # P4oblem Dictionary
+    # Problem Dictionary
     problem = {
         "problem_size": problem_size,
         "graph": graph_dict
@@ -38,5 +38,6 @@ def generate_max_cut(problem_size: int = 20, edge_probability: float = 0.5, seed
     
     # Add to Logging
     logger.info(f"Generated a problem with {problem_size} nodes and {edge_probability} edge probability")
-    problem = pretty_print(problem)
     return problem
+
+print(generate_max_cut(problem_size=10, edge_probability=0.5, seed=42))

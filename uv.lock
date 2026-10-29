@@ -53,7 +53,7 @@ version = "4.15.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "idna" },
-    { name = "typing-extensions", marker = "python_full_version < '3.15' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.15'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a9/d2/f4d173e22df740bc37b1db102b386ba719b66e95b0f0d751f556b387e6d2/anyio-4.15.1.tar.gz", hash = "sha256:9f28306018cbd6d329e64a36d58256edff76dd996fe423bc957326e578b82a94", size = 276966, upload-time = "2026-09-05T10:42:39.44Z" }
 wheels = [
@@ -156,7 +156,7 @@ name = "cffi"
 version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pycparser", marker = "implementation_name != 'PyPy' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "pycparser", marker = "implementation_name != 'PyPy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz", hash = "sha256:dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be", size = 530807, upload-time = "2026-08-03T21:21:18.939Z" }
 wheels = [
@@ -581,7 +581,7 @@ name = "cryptography"
 version = "50.0.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "platform_python_implementation != 'PyPy' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9d/af/182eb91b0df3fe75c4d9f26fe70684569566745f6ba7e5c9c73a862c5252/cryptography-50.0.2.tar.gz", hash = "sha256:7b46165bb56eb4704e2eaaf86f3c940d19154535d9b0ca7d6d590b04060e00d5", size = 880623, upload-time = "2026-09-30T15:30:04.884Z" }
 wheels = [
@@ -1467,6 +1467,7 @@ dependencies = [
     { name = "networkx" },
     { name = "numpy" },
     { name = "pydantic" },
+    { name = "pyyaml" },
     { name = "qiskit" },
     { name = "qiskit-ibm-runtime" },
     { name = "requests" },
@@ -1478,7 +1479,6 @@ dependencies = [
 [package.dev-dependencies]
 api = [
     { name = "fastapi" },
-    { name = "pyyaml" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 cpu = [
@@ -1493,8 +1493,8 @@ dev = [
 ]
 docs = [
     { name = "myst-parser" },
-    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
     { name = "sphinx-autodoc-typehints" },
     { name = "sphinx-rtd-theme" },
 ]
@@ -1510,6 +1510,7 @@ requires-dist = [
     { name = "networkx", specifier = ">=3.7" },
     { name = "numpy" },
     { name = "pydantic", specifier = ">=2.14.1" },
+    { name = "pyyaml" },
     { name = "qiskit", specifier = ">=2.6.1" },
     { name = "qiskit-ibm-runtime" },
     { name = "requests", specifier = ">=2.34.2" },
@@ -1521,7 +1522,6 @@ requires-dist = [
 [package.metadata.requires-dev]
 api = [
     { name = "fastapi", specifier = ">=0.162.0" },
-    { name = "pyyaml" },
     { name = "uvicorn", extras = ["standard"] },
 ]
 cpu = [{ name = "qiskit-aer", specifier = ">=0.18.0" }]
@@ -1550,7 +1550,7 @@ version = "2.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ast-serialize" },
-    { name = "librt", marker = "platform_python_implementation != 'PyPy' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "librt", marker = "platform_python_implementation != 'PyPy'" },
     { name = "mypy-extensions" },
     { name = "pathspec" },
     { name = "typing-extensions" },
@@ -1617,8 +1617,8 @@ dependencies = [
     { name = "markdown-it-py" },
     { name = "mdit-py-plugins" },
     { name = "pyyaml" },
-    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/21/dc/603751677fff302f34396e206b610f556a59d7fe58b9a2145f54e96b48e8/myst_parser-5.1.0.tar.gz", hash = "sha256:ab69322dc6719dcc7f296479dbb70181b66df6ed315064f92dbc85c0e1bf2f02", size = 101182, upload-time = "2026-05-13T09:38:19.361Z" }
 wheels = [
@@ -2300,7 +2300,7 @@ version = "0.12.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cryptography" },
-    { name = "sspilib", marker = "sys_platform == 'win32' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "sspilib", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/4b/58/d7c9cfdf1394a8b4d85ac488888814b28d26c4bd732191bd4169687cbfdd/pyspnego-0.12.4.tar.gz", hash = "sha256:acb314d6ca5c9ce87994b1eebbe2d8b687e0d564f9d650b306afb4c8f9c2ffd5", size = 235376, upload-time = "2026-10-06T03:46:23.105Z" }
 wheels = [
@@ -2312,7 +2312,7 @@ name = "pytest"
 version = "9.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
     { name = "iniconfig" },
     { name = "packaging" },
     { name = "pluggy" },
@@ -2553,7 +2553,7 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
     { name = "rpds-py" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/22/f5/df4e9027acead3ecc63e50fe1e36aca1523e1719559c499951bb4b53188f/referencing-0.37.0.tar.gz", hash = "sha256:44aefc3142c5b842538163acb373e24cce6632bd54bdb01b21ad5863489f50d8", size = 78036, upload-time = "2025-10-13T15:30:48.871Z" }
 wheels = [
@@ -2895,23 +2895,23 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 dependencies = [
-    { name = "alabaster", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "babel", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "colorama", marker = "(python_full_version < '3.13' and sys_platform == 'win32') or (python_full_version >= '3.13' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu') or (sys_platform != 'win32' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "docutils", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "imagesize", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "jinja2", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "packaging", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "pygments", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "requests", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "roman-numerals", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "snowballstemmer", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-applehelp", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-devhelp", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-htmlhelp", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-jsmath", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-qthelp", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-serializinghtml", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "alabaster" },
+    { name = "babel" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "docutils" },
+    { name = "imagesize" },
+    { name = "jinja2" },
+    { name = "packaging" },
+    { name = "pygments" },
+    { name = "requests" },
+    { name = "roman-numerals" },
+    { name = "snowballstemmer" },
+    { name = "sphinxcontrib-applehelp" },
+    { name = "sphinxcontrib-devhelp" },
+    { name = "sphinxcontrib-htmlhelp" },
+    { name = "sphinxcontrib-jsmath" },
+    { name = "sphinxcontrib-qthelp" },
+    { name = "sphinxcontrib-serializinghtml" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fc/73/567727fc8c8d85bc3adc88a246e12937cfda8d565cf1d80e85bceaa61fe5/sphinx-9.1.1.tar.gz", hash = "sha256:48b627f02908f22c601b3ba9c7b17265b4f315dd05c8bc64cd4da41183f44fbc", size = 8725638, upload-time = "2026-10-20T00:41:13.96Z" }
 wheels = [
@@ -2927,23 +2927,23 @@ resolution-markers = [
     "python_full_version >= '3.13' and python_full_version < '3.15'",
 ]
 dependencies = [
-    { name = "alabaster", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "babel", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "colorama", marker = "(python_full_version >= '3.13' and sys_platform == 'win32') or (python_full_version < '3.13' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu') or (sys_platform != 'win32' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "docutils", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "imagesize", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "jinja2", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "packaging", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "pygments", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "requests", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "roman-numerals", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "snowballstemmer", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-applehelp", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-devhelp", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-htmlhelp", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-jsmath", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-qthelp", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinxcontrib-serializinghtml", marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "alabaster" },
+    { name = "babel" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "docutils" },
+    { name = "imagesize" },
+    { name = "jinja2" },
+    { name = "packaging" },
+    { name = "pygments" },
+    { name = "requests" },
+    { name = "roman-numerals" },
+    { name = "snowballstemmer" },
+    { name = "sphinxcontrib-applehelp" },
+    { name = "sphinxcontrib-devhelp" },
+    { name = "sphinxcontrib-htmlhelp" },
+    { name = "sphinxcontrib-jsmath" },
+    { name = "sphinxcontrib-qthelp" },
+    { name = "sphinxcontrib-serializinghtml" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/64/d4/413466f0be8b1cb0e3e43893a148b96d7462d0923d82b4166b21afc5f30c/sphinx-9.2.0.tar.gz", hash = "sha256:90470459f3cab15d9dfed146c71cf77694b0445df17b2e0e69059cb9f7fc9ee4", size = 8782438, upload-time = "2026-10-21T00:05:15.019Z" }
 wheels = [
@@ -2955,9 +2955,9 @@ name = "sphinx-autodoc-typehints"
 version = "3.17.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "typing-extensions", marker = "python_full_version < '3.15' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.15'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9c/fa/c967fd665cc102c90338a90292aba336f852ee6f9b3477ffe4da565edb11/sphinx_autodoc_typehints-3.17.2.tar.gz", hash = "sha256:de41ed4001f4818bb6d37c22fd10ee44a93e6c8e945c6c7e3984e28a9df87d1c", size = 570767, upload-time = "2026-10-17T18:30:30.923Z" }
 wheels = [
@@ -2970,8 +2970,8 @@ version = "3.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "docutils" },
-    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
     { name = "sphinxcontrib-jquery" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/84/68/a1bfbf38c0f7bccc9b10bbf76b94606f64acb1552ae394f0b8285bfaea25/sphinx_rtd_theme-3.1.0.tar.gz", hash = "sha256:b44276f2c276e909239a4f6c955aa667aaafeb78597923b1c60babc76db78e4c", size = 7620915, upload-time = "2026-01-12T16:03:31.17Z" }
@@ -3011,8 +3011,8 @@ name = "sphinxcontrib-jquery"
 version = "4.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
-    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/de/f3/aa67467e051df70a6330fe7770894b3e4f09436dea6881ae0b4f3d87cad8/sphinxcontrib-jquery-4.1.tar.gz", hash = "sha256:1620739f04e36a2c779f1a131a2dfd49b2fd07351bf1968ced074365933abc7a", size = 122331, upload-time = "2023-03-14T15:01:01.944Z" }
 wheels = [
@@ -3052,24 +3052,12 @@ version = "0.6.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/0d/70/946df678028019b3bbdd6e4fa1fb46f7ccdf46fab1b807813e79aff30e84/sspilib-0.6.0.tar.gz", hash = "sha256:b4d4e3402230f14cd93999f3953619163075bcaca3e13dcf2ab5942c269627f4", size = 59976, upload-time = "2026-08-24T06:44:15.771Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/eb/b0/cf45f078d7b9f0a28d7bb247f9db31942d8b81674bb3aaa475e10c8d2623/sspilib-0.6.0-cp311-abi3-macosx_10_12_x86_64.whl", hash = "sha256:d239d78f9619d4fc76a9d57eb929258de50024c56097e73737d46ad58be0acaa", size = 6669242, upload-time = "2026-08-24T06:43:40.61Z" },
-    { url = "https://files.pythonhosted.org/packages/9e/4b/d0f8ebd058ff3e241fef762884419f27cdb2e1597b45ebd87061790813db/sspilib-0.6.0-cp311-abi3-macosx_11_0_arm64.whl", hash = "sha256:b79f8088f8e2826586e5eb14b68f03f443637df178e95c190765c8065fc57a37", size = 6154277, upload-time = "2026-08-24T06:43:42.397Z" },
-    { url = "https://files.pythonhosted.org/packages/0f/cd/a51bc36af754d67ed425259a4b7dde69f0867245ff8e0209b96e1d3be90d/sspilib-0.6.0-cp311-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:b65fa6f90e523daa6eb95c0aa707cd6c04705bdfab3e42c00723d23141bc74ad", size = 10435322, upload-time = "2026-08-24T06:43:43.968Z" },
-    { url = "https://files.pythonhosted.org/packages/93/29/5d4b9b53c982394d5e81a54d2818ca37478b2d68822a86aede3b4284bf86/sspilib-0.6.0-cp311-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:737adc3b14c2079480bcd10139fbab0b2ad683a24a6046ef69d9c769f4672c0a", size = 10403154, upload-time = "2026-08-24T06:43:46.009Z" },
     { url = "https://files.pythonhosted.org/packages/6b/89/d54087115dd1bdeafaaaee610defdcb940ebc241e1e2e7c52ec323e077bc/sspilib-0.6.0-cp311-abi3-win32.whl", hash = "sha256:70223bdfefde9656c48dd17bb58fd0fb7e879e5b08ab028267d585206f393886", size = 473115, upload-time = "2026-08-24T06:43:47.914Z" },
     { url = "https://files.pythonhosted.org/packages/4f/07/2519c128aad9c4062aa46bb8d584e01f8154d119e0a09191258da5935788/sspilib-0.6.0-cp311-abi3-win_amd64.whl", hash = "sha256:b841fabe630101d9e2be6ba56407a2a539087ee85d6ca1477748c21135c9f636", size = 557383, upload-time = "2026-08-24T06:43:49.079Z" },
     { url = "https://files.pythonhosted.org/packages/03/e5/a0aacae71a731a7575e2412b43549214b3fae898a8358a3d63b7c805aa42/sspilib-0.6.0-cp311-abi3-win_arm64.whl", hash = "sha256:9073afb8f30dc0e7f3a40b39fef0fc29e4bda6a3d4e77936f3c496cedc4beade", size = 484383, upload-time = "2026-08-24T06:43:50.291Z" },
-    { url = "https://files.pythonhosted.org/packages/3d/75/da0ed7428c0d79e667fa0291ee5895604f57b1dc819486500f5b69c5a7cd/sspilib-0.6.0-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:05883cd90cb2c67f18fd2418ab0f959549fbe6a9a4fc8013679411af23226d6e", size = 6802460, upload-time = "2026-08-24T06:43:51.685Z" },
-    { url = "https://files.pythonhosted.org/packages/bf/3d/fb885a0160d9c07fb2bc313d392bdd43e8e8436605da8e215fa515d5eee9/sspilib-0.6.0-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:83f99ed351d3091434f182579d20a419fa7baf03ec154632b5f7f3fbc6aa0788", size = 6276975, upload-time = "2026-08-24T06:43:53.368Z" },
-    { url = "https://files.pythonhosted.org/packages/49/0c/d6baf3003df4b9f61ea4a71eca68b47ec00645686d9db938df5a715850f1/sspilib-0.6.0-cp314-cp314t-manylinux_2_28_aarch64.whl", hash = "sha256:8b4b911f59f03601c23357146814e784c9a7612f34f5b933bdb1c50591b173d0", size = 11285390, upload-time = "2026-08-24T06:43:55.139Z" },
-    { url = "https://files.pythonhosted.org/packages/45/4e/90dba10a828311fb7232e1916d132ba2ebd4ec79f41f58310cc3766751be/sspilib-0.6.0-cp314-cp314t-manylinux_2_28_x86_64.whl", hash = "sha256:fe8c7c9f749ffd302336a7820889ad9189c237d1f6d24e1232d7e2c653433d5b", size = 11190870, upload-time = "2026-08-24T06:43:57.47Z" },
     { url = "https://files.pythonhosted.org/packages/f6/1d/679cee04cca4244d2a829686df201662618c2e87c6a19390861b04ffd9ee/sspilib-0.6.0-cp314-cp314t-win32.whl", hash = "sha256:0482631c67a57d8710ecbba3bbe49a9fb60e153dfcfee6d1f9b8a8ff6e419548", size = 592349, upload-time = "2026-08-24T06:43:59.426Z" },
     { url = "https://files.pythonhosted.org/packages/82/bc/77c0ec2fee5d94446d245b2ce1dba2f6f2dcfecef20be8d362d2b9bc6a5f/sspilib-0.6.0-cp314-cp314t-win_amd64.whl", hash = "sha256:5937dbe41c34cbbfabbafb84238a06aa8912210cae8a4b909fa20f965868cc89", size = 713678, upload-time = "2026-08-24T06:44:00.795Z" },
     { url = "https://files.pythonhosted.org/packages/fc/12/afd3c28e75a863aa2f29b40887570ebc91b12407818f2812d366b7fce1c2/sspilib-0.6.0-cp314-cp314t-win_arm64.whl", hash = "sha256:7ea194eeb68d8848fde7125a7ac67fbd4a9052442b7ce69ce6c0c8115227ec67", size = 558596, upload-time = "2026-08-24T06:44:02.428Z" },
-    { url = "https://files.pythonhosted.org/packages/3c/7f/6be3c69d44bd030e4ad4b9166b3503c1030372383cc62d77e915cef9b09d/sspilib-0.6.0-cp315-cp315t-macosx_10_15_x86_64.whl", hash = "sha256:76a289f415f9beb6a2f3f0cb37b655863616c303b2a06754e1bb84ad86348aab", size = 6798114, upload-time = "2026-08-24T06:44:03.843Z" },
-    { url = "https://files.pythonhosted.org/packages/6b/e9/f0e69f00f7962637ad54d55bae23084f26768884063fbaa779b28c1bea25/sspilib-0.6.0-cp315-cp315t-macosx_11_0_arm64.whl", hash = "sha256:6ad61668c4eea0fdeefd1f596c4fb7b3f45237b1a5989c12d4412729bded7231", size = 6271747, upload-time = "2026-08-24T06:44:05.63Z" },
-    { url = "https://files.pythonhosted.org/packages/5a/d0/d7b2ca32f5b4047549c397bfc986ab2400817f1d817e1675280e1e9e7d6e/sspilib-0.6.0-cp315-cp315t-manylinux_2_28_aarch64.whl", hash = "sha256:be2b500e7b745569794e8cfa557510f6c18e5402ad8f1fa1abe7adf53b3f3964", size = 11270216, upload-time = "2026-08-24T06:44:07.25Z" },
-    { url = "https://files.pythonhosted.org/packages/cd/49/86f537d48060a8c617b647fd4f6333ad6a80b641ffbbbc7357a2c69c2665/sspilib-0.6.0-cp315-cp315t-manylinux_2_28_x86_64.whl", hash = "sha256:73343ba40b04de0486ab92f60b729eb0768657f71e4c279555d3273f323c0ce4", size = 11205289, upload-time = "2026-08-24T06:44:09.235Z" },
     { url = "https://files.pythonhosted.org/packages/89/b2/68ae0e965f0d4ad6cab30291adb490d73a5a898735452b3c99158d98bfbb/sspilib-0.6.0-cp315-cp315t-win32.whl", hash = "sha256:03335e14f8563e350506b47a15887a99f08102a80cfb6bd715ad83ab1c2c89ae", size = 589548, upload-time = "2026-08-24T06:44:11.251Z" },
     { url = "https://files.pythonhosted.org/packages/d0/4f/1d3c64284faf9fa9b7d5ec2b4b9152cbcd59d0bf260883bd485be5d58551/sspilib-0.6.0-cp315-cp315t-win_amd64.whl", hash = "sha256:071e4e2a617a39a33e31de2c1f313427533879acabe475fedea31f129f7970bb", size = 707549, upload-time = "2026-08-24T06:44:12.826Z" },
     { url = "https://files.pythonhosted.org/packages/82/9d/26db0d0998bf4b20bc14809e30c20845b9ef34eb6114e9fe39541c7ee0a8/sspilib-0.6.0-cp315-cp315t-win_arm64.whl", hash = "sha256:97bb2e9d4d916d4d6f566888a81997bb3ab0e05ac41549fa0fbebabac66de0e8", size = 555718, upload-time = "2026-08-24T06:44:14.359Z" },
@@ -3081,7 +3069,7 @@ version = "1.10.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/48/bb/3d8757f21e9a53d9035c9eb039a777047139a16bfdbedfc7a58241c3d914/starlette-1.10.0.tar.gz", hash = "sha256:b8399098d4c1e3522734f7235dc79b1fc967f96cf139c81e0fa30479e0685f9b", size = 2734356, upload-time = "2026-10-24T15:04:12.342Z" }
 wheels = [
@@ -3120,7 +3108,7 @@ version = "0.27.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "annotated-doc" },
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
     { name = "rich" },
     { name = "shellingham" },
 ]
@@ -3177,7 +3165,7 @@ standard = [
     { name = "httptools" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
-    { name = "uvloop", marker = "(platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32') or (platform_python_implementation == 'PyPy' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu') or (sys_platform == 'cygwin' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu') or (sys_platform == 'win32' and extra == 'group-5-modus-cpu' and extra == 'group-5-modus-gpu')" },
+    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32'" },
     { name = "watchfiles" },
     { name = "websockets" },
 ]

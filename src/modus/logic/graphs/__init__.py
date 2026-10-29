@@ -4,10 +4,12 @@ from modus.logic.graphs.cpu_solver import (
     solve_simulated_annealing,
 )
 from modus.logic.graphs.generator import generate_max_cut
+from modus.logic.graphs.gpu_solver import solve_gpu
 
 __all__ = [
     "generate_max_cut",
     "solve_brute_force",
     "solve_cpu",
     "solve_simulated_annealing",
+    "solve_gpu"
 ]

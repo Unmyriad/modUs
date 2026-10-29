@@ -102,6 +102,39 @@ cd modus
 uv run modus
 ```
 
+## YAML configuration
+
+Copy `src/modus/config/config.yaml` to a file such as `run.yaml` and edit the
+graph generator settings:
+
+```yaml
+generator:
+  problem_size: 20
+  edge_probability: 0.5
+  seed: 42
+```
+
+Load and save configurations through the Python API:
+
+```python
+from modus.config import load_config, save_config
+
+config = load_config("run.yaml")
+generator_kwargs = config.generator.model_dump()
+# Pass these settings to generate_max_cut(**generator_kwargs).
+save_config(config, "shared-run.yaml")
+```
+
+`load_config()` loads the bundled example regardless of the working directory.
+Custom relative paths resolve from the working directory. Omitted settings default
+to 20 nodes, edge probability 0.5, and a null seed. A fixed integer seed makes
+generation reproducible; `seed: null` allows a new random graph each time.
+Node counts must be positive integers and probabilities must be between 0 and 1.
+Unknown keys, incorrect types, malformed YAML, and empty files raise `ConfigError`;
+use `{}` for a configuration containing only defaults. Saved files include all
+defaults and can be shared or loaded again. The current configuration API covers
+graph generation; solver and CLI configuration are not implemented yet.
+
 # Development
 Development tools (`pytest`, `ruff`, `mypy`) are in the `dev` group, which uv installs by default. Add your hardware group as usual:
 ```bash
